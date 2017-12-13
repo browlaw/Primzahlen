@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+%Umlaute
+\usepackage[utf8]{inputenc}
+%
+ \usepackage[T1]{fontenc}
+ %Ränder
+ \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+ %Grafiken
+ \usepackage{graphicx}
+ %Tiefe der Numerierung im document
+ \setcounter{secnumdepth}{3}
+ %Tiefe der Numerierung im Inhaltsverzeichnis
+ \setcounter{tocdepth}{2}
+ %Verlinken von verzeichnissen
+ \usepackage{hyperref}
+ %Farbänderung möglich
+ \usepackage{color}
+ %Farbe
+ \definecolor{darkblue}{rgb}{0.3,0,0.5}
+ %Links umfärben
+ \hypersetup{colorlinks, linkcolor=darkblue}
+ %Stichwordverzeichnis
+ \usepackage{makeidx}
+ \makeindex
+ %Alles in Deutsch 
+
+ \usepackage[german]{babel}
+ \renewcommand{\indexname}{Stichwortverzeichnis}
+\begin{document}
+\titel{Berühmte Sätze und Probleme rund um Primzahlen}
+\tableofcontents
+\newpage
+\section*{Vorwort}
+In dieser Nachfolgenden Seminararbeit werden sie über Primzahlen informiert mithilfe von
+berühmten Sätzen und Problemen rund um Primzahlen.
+\newpage
+% Grundlagen zu Primzahlen
+\section{Definitionen und Grundlagen von Primzahlen}
+Primzahlen sind Zahlen welche genau zwei Teiler haben. Sie sind deshalb ein sehr interessanter und wichtiger Bestandteil der Mathematik, obwohl sie nur im natürlichen Bereich der Zahlen eine große rolle Spielen.
+\subsection{Primfaktorzerlegung}
+\subsection{Der Satz des Euklid}
+\subsection{Das Sieb des Eratosthenes}
+%spezielle Primzahlen
+\section{Spezielle Primzahlen}
+\subsection{Mersenne Primzahlen}
+\subsection{Fermatsche Primzahlen}
+% mathematische Vermutungen zu Primzahlen
+\section{Mathematische Vermutungen zu Primzahlen}
+\subsection{Primzahl-Zwillinge}
+\subsection{Goldbachsche Vermutung}
+\end{document}
