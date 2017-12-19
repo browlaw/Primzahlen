@@ -1,0 +1,33 @@
+Jetzt komme ich auf das Sieb des Eratosthenes zu sprechen welches ungefähr im Jahre 200 vor Christus vom namensgebenden Mathematiker Eratosthenes entwickelt wurde. Es ist genau wie der Simple Primrechner ein verfahren um eine große menge nach Primzahlen zu untersuchen und diese Herauszufiltern doch hat es einen großen Vorteil. Dieser ist das es effizienter ist. Dazu kann jeder dieses Prinzip verwenden wenn er genug Speicherkapazität hat, wobei mit dieser nicht nur die Elektrische Form gemeint ist sondern jede Art von Speicherung zum Beispiel ein Papier könnte als Speicher Fungieren. Es Funktioniert indem die Zahl '2' genommen wird und diese automatisch Prim ist daraufhin werden alle Multiplikationen, beginnend mit dem Quadrat, dieser Zahl gestrichen. Die nächste Zahl 'n' welche nicht gestrichen ist wird dann automatisch Prim und der Vorgang des Streichen wird mit dieser wiederholt. Dieser weitere Vorgang wird solange gemacht bis man zu der Stelle gelangt wo das Quadrat der aktuellen Zahl 'n' über dem Maximum liegt und dann werden alle noch nicht gestrichenen Zahlen in der liste automatisch Primzahlen.\newline 
+Ich zeige ihnen dieses System jetzt als Veranschaulichung anhand des folgenden Java Programms:
+\lstset{language=Java} 
+\begin{lstlisting}[frame=single]
+  final int maxprim = (int)Math.sqrt(max)+2;
+	      boolean[] zahlen = new boolean[max];
+	      for (int i = 0; i < max; i++){
+	         zahlen[i] = i%2 == 1	    
+	         }  
+	      for (int prim = 3; prim < maxprim; prim += 2){
+
+	         if (zahlen[prim]) { 
+	            for (int i = prim; i <= max / prim; i++) {
+	               final int zahl = i*prim;
+	               if (zahl < max)
+	                  zahlen[zahl] = false;
+	         }
+	      }
+	     }  
+	      int anzahl = 0;
+	      for (boolean istPrim : zahlen) {
+	        if (istPrim){
+	          anzahl++;
+	          }
+	     }
+	      int[] primzahlen = new int[anzahl];
+	      int index = 0;
+	      for (int i = 0; i < zahlen.length; i++){
+	        if (zahlen[i]){
+	          primzahlen[index++] = i;
+				}	          
+	          }
+\end{lstlisting}
