@@ -42,11 +42,11 @@ std::string primfaktorzerlegung(size_t zahl)
 
 int main(  )
 {
-	std::cout << primfaktorzerlegung(99) << std::endl;
-	for (size_t i = 3; i < 0xFFFFFFFFFFFFFFFF; ++i)
+	//std::cout << primfaktorzerlegung(14) << std::endl;
+	/*for (size_t i = 3; i < 0xFFFFFFFFFFFFFFFF; ++i)
 	{
 		std::cout << primfaktorzerlegung(i) << std::endl;
-	}
+	}*/
 
 	system("pause");
 

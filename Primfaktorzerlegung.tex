@@ -1,5 +1,22 @@
-Jede natuerliche Zahl 'n' kann als Produkt von Primzahlen 'p' dargestellt werden. Dies nennt man Primfaktorzerlegung. Die Reihenfolge der einzelnen Primfaktoren 'p' spielt wie bei jeder anderen Multiplikation keine Rolle. Fuer den Fall, dass 'n' eine Primzahl ist, ist sie ihr einziger Faktor. Bei der Primfaktorzerlegung koennen Faktoren mehrfach auftreten. Diese kann man Exponentiell zusammenfassen. Kanonische Primfaktorzerlegung wird eine Primfaktorzerlegung genannt, sobald die einzelnen Faktoren aufsteigend geordnet sind ('pk < pk+1').
-
-*Beispiele fuer Primfaktorzerlegung*
-
-Verfahren: Bis jetzt kein effizienter Algorithmus
+\subsubsection{Definition}
+Jede natuerliche Zahl 'n' kann als Produkt von Primzahlen 'p', den Primfaktoren, dargestellt werden. Dies nennt man Primfaktorzerlegung. Die Reihenfolge der einzelnen Primfaktoren 'p' spielt wie bei jeder anderen Multiplikation keine Rolle. Fuer den Fall, dass 'n' eine Primzahl ist, ist sie ihr einziger Faktor. Bei der Primfaktorzerlegung koennen Faktoren mehrfach auftreten. Diese kann man Exponentiell zusammenfassen. Kanonische Primfaktorzerlegung wird eine Primfaktorzerlegung genannt, sobald die einzelnen Faktoren nach der Hoehe ihrer Basis aufsteigend geordnet sind ('pk < pk+1').
+\subsubsection{Beispiele}
+%*Beispiele fuer Primfaktorzerlegung*
+\begin{equation}
+14 = 2 * 7
+\end{equation}
+\begin{equation}
+69 = 3 * 23
+\end{equation}
+\begin{equation}
+666 = 2 * 3 * 3 * 27
+\end{equation}
+\begin{equation}
+1337 = 7 * 191
+\end{equation}
+Und in der Kanonischen Primfaktorzerlegung:
+\begin{equation}
+666 = 2 * 3^2 * 27
+\end{equation}
+\subsubsection{Faktorisierungsverfahren}
+Bis heute gibt es kein effizientes Faktorisierungsverfahren. Die einfachste Moeglichkeit ist es, die zu faktorisierende, natuerliche Zahl 'n' durch alle Primzahlen von Zwei bis zur Wurzel von 'n' zu teilen, bis man einen Teiler gefunden hat, bei dem das Ergebnis keinen Rest hat. Man merkt sich nun diesen Teiler, welcher der erste Primfaktor ist, und fuehrt nun fort, wobei 'n' nun das Ergibnis von 'n'/'p' ist.
