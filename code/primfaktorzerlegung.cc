@@ -1,7 +1,3 @@
-#include <vector>
-#include <iostream>
-#include <sstream>
-
 size_t teile(size_t zahl)
 {
 	size_t teiler = 2;
@@ -40,16 +36,32 @@ std::string primfaktorzerlegung(size_t zahl)
 	return ss.str();
 }
 
+void generatePrimeFactors(unsigned threadnum, std::map<size_t, std::string>* factors)
+{
+	std::cout << threadnum << std::endl;
+	for (size_t i = threadnum; i < 0xFFFFFFF; i += 8)
+	{
+		factors->insert(std::pair<size_t, std::string>(i, primfaktorzerlegung(i)));
+	}
+}
+
 int main(  )
 {
-	//std::cout << primfaktorzerlegung(14) << std::endl;
-	/*for (size_t i = 3; i < 0xFFFFFFFFFFFFFFFF; ++i)
+	std::map<size_t, std::string> factors;
+	std::thread* threads = new std::thread[8];
+	for (unsigned i = 0; i < 8; ++i)
 	{
-		std::cout << primfaktorzerlegung(i) << std::endl;
-	}*/
+		threads[i] = std::thread(generatePrimeFactors, i, &factors);
+	}
+
+	for (unsigned i = 0; i < 8; ++i)
+	{
+		threads[i].join();
+	}
+
+	delete[] threads;
 
 	system("pause");
 
     return 0;
 }
-
