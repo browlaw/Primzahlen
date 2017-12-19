@@ -1,0 +1,18 @@
+ Mit diesen Informationen kann man bereits dieses simple Programm schreiben: 
+\lstset{language=Java} 
+\begin{lstlisting}[frame=single] 
+Vector<Integer> g = new Vector<Integer>();
+for (int i = 3; i< Maxwert; i++){
+boolean isPrime = true;
+			for (int j = 2; j < Math.sqrt(i); j++) {
+				if (i%j==0) {
+					isPrime = false;
+					break;
+				}
+			}
+		if(isPrime){
+			g.add(i);
+			}	
+		}
+\end{lstlisting}
+Am Anfang muss man einen Behälter mit Variabler Größe Festlegen denn man weiß ja erstmals nicht wie viele Primzahlen es später gibt. Anschließend wird eine for-Schleife durchlaufen welche die zu testende Zahl gibt. Hier wird dann eine Boolsche Variable gesetzt mithilfe welcher später abgefragt wird ob dieser Test erfolgreich war oder nicht. Die Zahl i wird durch eine for-Schleife mit allen Zahlen von 2 bis zu ihrer Wurzel geteilt und wenn das ergebnis der Teilung null ergibt wird die Boolsche Variable auf false gesetzt und aus der for-Schleife rausgebreakt, womit verhindert wird das sie weiter getestet wird. Man muss dies nur bis zur Wurzel machen weil wenn man die Wurzel quadriert ergibt das die zahl und somit wäre sie durch sich selbst teilbar und höher muss man nicht gehen da es laut der Primfaktorzerlegung einen kleineren Teiler bereits gegeben haben muss. Schlussendlich wird die Boolsche Variable abgefragt und wenn sie True ist wird die Primzahl in den Behälter geschrieben. Dieses Testverfahren wird mit jeder Zahl, bis zu einem vorbestimmten Maximum, durchgeführt. Der Benutzer könnte danach alle Primzahlen simple mit einer for-Schleife abfragen und sie wo immer er will ausgeben oder verwenden. Das Problem mit diesem Verfahren ist das es alle Zahlen durchgeht bis zu dem Maximalwert dadurch läuft es recht langsam.

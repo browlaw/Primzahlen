@@ -1,4 +1,5 @@
 \documentclass[11pt]{article}
+\usepackage{listings}
 %Umlaute
 \usepackage[utf8]{inputenc}
  \usepackage[T1]{fontenc}
@@ -6,7 +7,6 @@
  \usepackage[left=4cm,right=2cm,top=2cm,bottom=2cm]{geometry}
  %Grafiken
  \usepackage{graphicx}
-\usepackage{listings}
  %Tiefe der Numerierung im document
  \setcounter{secnumdepth}{3}
  %Tiefe der Numerierung im Inhaltsverzeichnis
@@ -34,10 +34,15 @@
 \newpage
 % Grundlagen zu Primzahlen
 \section{Definition und Grundlagen von Primzahlen}
-%\input{Definition.tex}
+\input{Definition}
 \subsection{Primfaktorzerlegung}
 \input{Primfaktorzerlegung}
+\newpage
 \subsection{Der Satz des Euklid}
+\newpage
+\subsubsection{Simpler Primrechner}
+\input{simplesProgramm}
+\newpage
 \subsection{Das Sieb des Eratosthenes}
 %spezielle Primzahlen
 \section{Spezielle Primzahlen}
