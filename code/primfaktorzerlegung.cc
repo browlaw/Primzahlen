@@ -1,3 +1,13 @@
+#include "stdafx.h"
+#include <vector>
+#include <iostream>
+#include <sstream>
+#include <thread>
+#include <map>
+#include <fstream>
+
+const size_t g_maxVal = 0xFFFFFF;
+
 size_t teile(size_t zahl)
 {
 	size_t teiler = 2;
@@ -36,32 +46,51 @@ std::string primfaktorzerlegung(size_t zahl)
 	return ss.str();
 }
 
-void generatePrimeFactors(unsigned threadnum, std::map<size_t, std::string>* factors)
+void generate_prime_factors(unsigned threadnum, unsigned threadc, std::map<size_t, std::string>* factors)
 {
-	std::cout << threadnum << std::endl;
-	for (size_t i = threadnum; i < 0xFFFFFFF; i += 8)
+	if (threadnum == 0)
+		threadnum += threadc;
+	for (size_t i = threadnum; i < g_maxVal && !g_shouldExit; i += threadc)
 	{
 		factors->insert(std::pair<size_t, std::string>(i, primfaktorzerlegung(i)));
 	}
 }
 
-int main(  )
+void multithreaded_factorization(std::map<size_t, std::string>* factors)
 {
-	std::map<size_t, std::string> factors;
-	std::thread* threads = new std::thread[8];
-	for (unsigned i = 0; i < 8; ++i)
+	const size_t threadc = std::thread::hardware_concurrency();
+	std::thread* threads = new std::thread[threadc];
+	for (unsigned i = 0; i < threadc; ++i)
 	{
-		threads[i] = std::thread(generatePrimeFactors, i, &factors);
+		threads[i] = std::thread(generate_prime_factors, i, threadc, factors);
 	}
 
-	for (unsigned i = 0; i < 8; ++i)
+	for (unsigned i = 0; i < threadc; ++i)
 	{
 		threads[i].join();
 	}
 
 	delete[] threads;
+}
 
-	system("pause");
+void print_factors(std::ostream& os, std::map<size_t, std::string>* factors)
+{
+	for (std::map<size_t, std::string>::iterator it = factors->begin(); it != factors->end(); ++it)
+	{
+		os << it->second << "\n";
+	}
+}
 
-    return 0;
+int main()
+{
+	std::map<size_t, std::string> factors;
+	multithreaded_factorization(&factors);
+	std::ofstream os("testfile.txt", std::ios::trunc | std::ios::binary);
+	if (os)
+		print_factors(os, &factors);
+	os.close();
+
+	std::system("pause");
+
+	return 0;
 }
