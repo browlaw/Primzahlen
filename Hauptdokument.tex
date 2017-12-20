@@ -26,7 +26,13 @@
  \usepackage[german]{babel}
  \renewcommand{\indexname}{Stichwortverzeichnis}
 \begin{document}
+\begin{titlepage}
 \title{Berühmte Sätze und Probleme Rund um Primzahlen}
+\author{Ilja Kononenko und David Silvan Zingrebe}
+\maketitle
+Seminar: Diskrete Mathematik\\
+Bei: Heinz-Juergen Schmidt\\
+\end{titlepage}
 \tableofcontents
 \newpage
 \section*{Vorwort}
@@ -34,12 +40,11 @@
 \newpage
 % Grundlagen zu Primzahlen
 \section{Definition und Grundlagen von Primzahlen}
-%\input{Definition}
+\input{Definition}
 \subsection{Primfaktorzerlegung}
 \input{Primfaktorzerlegung}
 \newpage
 \subsection{Der Satz des Euklid}
-\input{SatzDesEuklid.tex}
 \newpage
 \subsection{Simpler Primrechner}
 \input{simplesProgramm}
@@ -49,14 +54,19 @@
 \newpage
 %spezielle Primzahlen
 \section{Spezielle Primzahlen}
+In diesem Abschnitt werden sie über zwei der berühmtesten Primzahl arten aufgeklärt zuerst über die Mersenne Primzahlen und anschließend über die Fermatschen Primzahlen. Diese sind extrem wichtig da sie die Rekorde Halten als aktuell größte gefundene Primzahlen.
 \subsection{Mersenne Primzahlen}
+\input{MersennePrimzahlen}
 \newpage
 \subsection{Fermatsche Primzahlen}
 \newpage
 % mathematische Vermutungen zu Primzahlen
 \section{Mathematische Vermutungen zu Primzahlen}
+Hier kommen wir zu den Unbelegten Vermutungen von Primzahlen. Wir werden versuchen die Probleme mit diesem Vermutungen zu schildern und erklären warum sie nicht belegt sind und welche Probleme auftreten wenn man sie zu belegen versucht.
 \subsection{Primzahl-Zwillinge}
 \newpage
 \subsection{Goldbachsche Vermutung}
 \newpage
+\section*{Info für sie nicht in die Bewertung mit einziehen}
+\input{infos}
 \end{document}
