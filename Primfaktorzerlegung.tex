@@ -12,7 +12,8 @@ $666 = 2 * 3^2 * 27$
 Bis heute gibt es kein effizientes Faktorisierungsverfahren. Die einfachste Moeglichkeit ist es, die zu faktorisierende, natuerliche Zahl \textbf{n} durch alle Primzahlen von Zwei bis zur Wurzel von \textbf{n} zu teilen, bis man einen Teiler gefunden hat, bei dem das Ergebnis keinen Rest hat. Man merkt sich nun diesen Teiler, also den ersten Primfaktor, und fuehrt nun fort, ersetzt jedoch \textbf{n} mit dem gerade errechneten Quotienten. Fortgefuerht wird dies, solange \textbf{n} keine Primzahl ist. Ist sie es, hat man seine natuerliche Zahl \textbf{n} erfolgreich ausschliesslich mit Primzahlen faktorisiert.
 \subsubsection{Programmbeispiel}
 Das folgende Programm in C++ generiert eine Abbildung als String der Primfaktorzerlegung der Zahlen von 2 bis g\_maxVal.
-\begin{lstlisting}
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]
 #include <vector>
 #include <iostream>
 #include <sstream>
@@ -76,13 +77,16 @@ void generate_prime_factor(
 	}
 }
 
-void multithreaded_factorization(std::map<size_t, std::string>* factors)
+void multithreaded_factorization(
+	std::map<size_t, std::string>* factors)
 {
 	const size_t threadc = std::thread::hardware_concurrency();
 	std::thread* threads = new std::thread[threadc];
 	for (unsigned i = 0; i < threadc; ++i)
 	{
-		threads[i] = std::thread(generate_prime_factors, i, threadc, factors);
+		threads[i] = std::thread(
+			generate_prime_factors,
+			i, threadc, factors);
 	}
 
 	for (unsigned i = 0; i < threadc; ++i)
@@ -93,9 +97,11 @@ void multithreaded_factorization(std::map<size_t, std::string>* factors)
 	delete[] threads;
 }
 
-void print_factors(std::ostream& os, std::map<size_t, std::string>* factors)
+void print_factors(	std::ostream& os, 
+			std::map<size_t, std::string>* factors)
 {
-	for (std::map<size_t, std::string>::iterator it = factors->begin();
+	for (std::map<size_t, std::string>::iterator it =
+			factors->begin();
 			it != factors->end(); ++it)
 	{
 		os << it->second << "\n";
