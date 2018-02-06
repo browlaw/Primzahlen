@@ -1,12 +1,13 @@
-#include "stdafx.h"
 #include <vector>
 #include <iostream>
 #include <sstream>
 #include <thread>
 #include <map>
 #include <fstream>
+#include <math.h>
 
-const size_t g_maxVal = 0xFFFFFF;
+const size_t g_maxVal = 0xFFFFF;
+bool g_should_exit;
 
 size_t teile(size_t zahl)
 {
@@ -50,7 +51,7 @@ void generate_prime_factors(unsigned threadnum, unsigned threadc, std::map<size_
 {
 	if (threadnum == 0)
 		threadnum += threadc;
-	for (size_t i = threadnum; i < g_maxVal && !g_shouldExit; i += threadc)
+	for (size_t i = threadnum; i < g_maxVal && !g_should_exit; i += threadc)
 	{
 		factors->insert(std::pair<size_t, std::string>(i, primfaktorzerlegung(i)));
 	}
@@ -83,14 +84,10 @@ void print_factors(std::ostream& os, std::map<size_t, std::string>* factors)
 
 int main()
 {
+	g_should_exit = false;
 	std::map<size_t, std::string> factors;
 	multithreaded_factorization(&factors);
-	std::ofstream os("testfile.txt", std::ios::trunc | std::ios::binary);
-	if (os)
-		print_factors(os, &factors);
-	os.close();
-
-	std::system("pause");
+	print_factors(std::cout, &factors);
 
 	return 0;
 }
