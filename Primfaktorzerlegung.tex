@@ -2,12 +2,12 @@
 Jede natürliche Zahl $n$ kann als Produkt von Primzahlen $p$, den Primfaktoren, dargestellt werden. Dies nennt man Primfaktorzerlegung. Die Reihenfolge der einzelnen Primfaktoren $p$ spielt wie bei jeder anderen Multiplikation keine Rolle. Für den Fall, daß $n$ eine Primzahl ist, ist sie ihr einziger Faktor. Bei der Primfaktorzerlegung können Faktoren mehrfach auftreten. Diese kann man Exponentiell zusammenfassen. Kanonische Primfaktorzerlegung wird eine Primfaktorzerlegung genannt, sobald die einzelnen Faktoren nach der Höhe ihrer Basis aufsteigend geordnet sind ($p_k < p_{k+1}$).
 \subsubsection{Beispiele}
 %*Beispiele für Primfaktorzerlegung*
-$14 = 2 * 7$\newline
-$69 = 3 * 23$\newline
-$666 = 2 * 3 * 3 * 27$\newline
-$1337 = 7 * 191$\newline\newline
+$14 = 2 \cdot 7$\newline
+$69 = 3 \cdot 23$\newline
+$666 = 2 \cdot 3 \cdot 3 \cdot 27$\newline
+$1337 = 7 \cdot 191$\newline\newline
 Und in der Kanonischen Primfaktorzerlegung:\newline\newline
-$666 = 2 * 3^2 * 27$
+$666 = 2 \cdot 3^2 \cdot 27$
 \subsubsection{Faktorisierungsverfahren}
 Bis heute gibt es kein effizientes Faktorisierungsverfahren. Die einfachste Möglichkeit ist es, die zu faktorisierende, natürliche Zahl \textbf{n} durch alle Primzahlen von Zwei bis zur Wurzel von \textbf{n} zu teilen, bis man einen Teiler gefunden hat, bei dem das Ergebnis keinen Rest hat. Man merkt sich nun diesen Teiler, also den ersten Primfaktor, und führt nun fort, ersetzt jedoch \textbf{n} mit dem gerade errechneten Quotienten. Fortgefürht wird dies, solange \textbf{n} keine Primzahl ist. Ist sie es, hat man seine natürliche Zahl \textbf{n} erfolgreich ausschliesslich mit Primzahlen faktorisiert.
 \subsubsection{Programmbeispiel}
@@ -121,4 +121,10 @@ int main(  )
 }
 \end{lstlisting}
 \newpage
-In der main-Methode wird ein Array erstellt, in dem die Ergebnisse der Primfaktorzerlegung als String abgespeichert werden kann. Anschließend wird die Methode \textbf{multithreaded\_factorization} aufgerufen, welche, um die Performance zu verbessern, mehrere Threads, deren Anzahl der Anzahl der Kerne der CPU entspricht, gestartet. Diese sollen die jeweiligen Faktorisierungen aller natürlichen Zahlen von 1 bis \textbf{g\_maxVal} berechnen und in \textbf{factors} abspeichern. Die errechneten Faktoren können mittels der \textbf{print\_factors}-Methode in einen beliebigen stringstream \textbf{os} gestreamt werden. Dies können Dateien, Netzwerkübertragungen oder lediglich das Terminal des Computers sein. Die Funktion \textbf{generate\_prime\_factors} durchläuft eine Schleife, welche die Primfaktorzerlegung der natürlichen Zahl \textbf{threadnum} berechnet und diesen Wert daraufhin um die Anzahl aller Threads \textbf{threadc} erhöht. Dadurch kommen sich die einzelnen Threads beim Abspeichern der errechneten Faktoren nicht in die Quere. Die \textbf{primfaktorzerlegun}-Funktion gibt eine Stringrepräsentation der Faktorisierung der übergebenen natürlichen Zahl \textbf{zahl} zurück. Dabei wird solange \textbf{zahl} nicht eins, also der ersten Zahl, bei der eine weitere Faktorisierung keinen Sinn mehr macht, ist, der kleinste Teiler von \textbf{zahl} bestimmt, der eine Primzahl ist und an den zureckzugebenen String angehängt. Der kleinstmögliche Teiler, der eine Primzahl ist, kann mit der Funktion \textbf{teile} bestimmt werden. Der gesuchte Teiler wird ermittelt, in dem geschaut wird, ob die übergebene Zahl dividiert mit dem Startwert 2 des Teilers \textbf{teiler} eine natürliche Zahl ergibt. Falls ja, wurde der kleinste Faktor gefunden. Falls nicht wird \textbf{teiler} inkrementiert und es wird erneut auf eine Division ohne Rest getestet. Ist \textbf{teiler} größer als die Quadratwurzel der gesuchten Zahl \textbf{zahl}, kann abgebrochen werden, da \textbf{zahl} prim ist und somit ihren bestmöglichen eigenen Faktor darstellt.
+% Erklärung der einzelnen Methoden
+In der main-Methode wird ein Array erstellt, in dem die Ergebnisse der Primfaktorzerlegung als String abgespeichert werden kann.
+Anschließend wird die Methode \textbf{multithreaded\_factorization} aufgerufen, welche, um die Performance zu verbessern, mehrere Threads, deren Anzahl der Anzahl der Kerne der CPU entspricht, gestartet. Diese sollen die jeweiligen Faktorisierungen aller natürlichen Zahlen von 1 bis \textbf{g\_maxVal} berechnen und in \textbf{factors} abspeichern.\\
+Die errechneten Faktoren können mittels der \textbf{print\_factors}-Methode in einen beliebigen stringstream \textbf{os} gestreamt werden. Dies können Dateien, Netzwerkübertragungen oder lediglich das Terminal des Computers sein.\\
+Die Funktion \textbf{generate\_prime\_factors} durchläuft eine Schleife, welche die Primfaktorzerlegung der natürlichen Zahl \textbf{threadnum} berechnet und diesen Wert daraufhin um die Anzahl aller Threads \textbf{threadc} erhöht. Dadurch kommen sich die einzelnen Threads beim Abspeichern der errechneten Faktoren nicht in die Quere.\\
+Die \textbf{primfaktorzerlegun}-Funktion gibt eine Stringrepräsentation der Faktorisierung der übergebenen natürlichen Zahl \textbf{zahl} zurück. Dabei wird solange \textbf{zahl} nicht eins, also der ersten Zahl, bei der eine weitere Faktorisierung keinen Sinn mehr macht, ist, der kleinste Teiler von \textbf{zahl} bestimmt, der eine Primzahl ist und an den zureckzugebenen String angehängt.\\
+Der kleinstmögliche Teiler, der eine Primzahl ist, kann mit der Funktion \textbf{teile} bestimmt werden. Der gesuchte Teiler wird ermittelt, in dem geschaut wird, ob die übergebene Zahl dividiert mit dem Startwert 2 des Teilers \textbf{teiler} eine natürliche Zahl ergibt. Falls ja, wurde der kleinste Faktor gefunden. Falls nicht wird \textbf{teiler} inkrementiert und es wird erneut auf eine Division ohne Rest getestet. Ist \textbf{teiler} größer als die Quadratwurzel der gesuchten Zahl \textbf{zahl}, kann abgebrochen werden, da \textbf{zahl} prim ist und somit ihren bestmöglichen eigenen Faktor darstellt.\\
