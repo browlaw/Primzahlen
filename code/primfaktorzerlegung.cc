@@ -6,7 +6,7 @@
 #include <fstream>
 #include <math.h>
 
-const size_t g_maxVal = 0xFFFFF;
+const size_t g_maxVal = 0xFFFFFF;
 bool g_should_exit;
 
 size_t teile(size_t zahl)
@@ -82,12 +82,34 @@ void print_factors(std::ostream& os, std::map<size_t, std::string>* factors)
 	}
 }
 
-int main()
+int main2()
 {
 	g_should_exit = false;
 	std::map<size_t, std::string> factors;
 	multithreaded_factorization(&factors);
 	print_factors(std::cout, &factors);
+
+	return 0;
+}
+
+int main(int argc, char **argv)
+{
+	size_t num;
+
+	if (argc == 1)
+	{
+		main2();
+	}
+	else if (argc == 2)
+	{
+		size_t num = atoll(argv[1]);
+		std::cout << primfaktorzerlegung(num) << std::endl;
+	}
+	else
+	{
+		std::cout << "Usage: ./dick <num>" << std::endl;
+		return 1;
+	}
 
 	return 0;
 }
