@@ -1,38 +1,31 @@
-Jetzt komme ich auf das Sieb des Eratosthenes zu sprechen welches ungefähr im Jahre 200 vor Christus vom namensgebenden Mathematiker Eratosthenes entwickelt wurde. Es ist genau wie der Simple Primrechner ein verfahren um eine große menge nach Primzahlen zu untersuchen und diese Herauszufiltern doch hat es einen großen Vorteil. Dieser ist das es effizienter ist. Dazu kann jeder dieses Prinzip verwenden wenn er genug Speicherkapazität hat, wobei mit dieser nicht nur die Elektrische Form gemeint ist sondern jede Art von Speicherung zum Beispiel ein Papier könnte als Speicher Fungieren. Es Funktioniert indem die Zahl '2' genommen wird und diese automatisch Prim ist daraufhin werden alle Multiplikationen, beginnend mit dem Quadrat, dieser Zahl gestrichen. Die nächste Zahl 'n' welche nicht gestrichen ist wird dann automatisch Prim und der Vorgang des Streichen wird mit dieser wiederholt. Dieser weitere Vorgang wird solange gemacht bis man zu der Stelle gelangt wo das Quadrat der aktuellen Zahl 'n' über dem Maximum liegt und dann werden alle noch nicht gestrichenen Zahlen in der liste automatisch Primzahlen.
+Jetzt komme ich auf das Sieb des Eratosthenes zu sprechen welches ungefähr im Jahre 200 vor Christus vom namensgebenden Mathematiker Eratosthenes entwickelt wurde. Es ist genau wie der Simple Primrechner ein verfahren um eine große menge nach Primzahlen zu untersuchen und diese Herauszufiltern jedoch hat es einen großen Vorteil. Dieser ist das es effizienter ist. Dazu kann jeder dieses Prinzip verwenden wenn er genug Speicherkapazität hat, wobei mit dieser nicht nur die Elektrische Form gemeint ist sondern jede Art von Speicherung zum Beispiel ein Papier könnte als Speicher Fungieren. Es Funktioniert indem die Zahl '2' genommen wird und diese automatisch Prim ist daraufhin werden alle Multiplikationen, beginnend mit dem Quadrat, dieser Zahl gestrichen. Die nächste Zahl 'n' welche nicht gestrichen ist wird dann automatisch Prim und der Vorgang des Streichen wird mit dieser wiederholt. Dieser weitere Vorgang wird solange gemacht bis man zu der Stelle gelangt wo das Quadrat der aktuellen Zahl 'n' über dem Maximum liegt und dann werden alle noch nicht gestrichenen Zahlen in der liste automatisch Primzahlen.
 \subsubsection{Programm}
 Ich zeige ihnen dieses System jetzt als Veranschaulichung anhand des folgenden Java Programms:
 \lstset{language=Java} 
 \begin{lstlisting}[frame=single]
-  final int maxprim = (int)Math.sqrt(max)+2;
-	      boolean[] zahlen = new boolean[max];
-	      for (int i = 0; i < max; i++){
-	         zahlen[i] = i%2 == 1	    
-	         }  
-	      for (int prim = 3; prim < maxprim; prim += 2){
-
-	         if (zahlen[prim]) { 
-	            for (int i = prim; i <= max / prim; i++) {
-	               final int zahl = i*prim;
-	               if (zahl < max)
-	                  zahlen[zahl] = false;
-	         }
-	      }
-	     }  
-	      int anzahl = 0;
-	      for (boolean istPrim : zahlen) {
-	        if (istPrim){
-	          anzahl++;
-	          }
-	     }
-	      int[] primzahlen = new int[anzahl];
-	      int index = 0;
-	      for (int i = 0; i < zahlen.length; i++){
-	        if (zahlen[i]){
-	          primzahlen[index++] = i;
-				}	          
-	          }
-	          primzahlen[0]=2;
+  private static boolean[] eratosthenes(int max)
+	{
+		boolean[] primes = new boolean[max];
+		for (int i = 2; i < max; ++i)
+		{
+			primes[i] = true;
+		}
+		
+		int i = 2;
+		for(; i * i < max; ++i)
+		{
+			if (primes[i])
+			{
+				//System.out.println(i);
+				for (int j = i * i; j < max; j = j + i)
+					primes[j] = false;
+			}
+		}
+		
+		
+		return primes;
+	}
 \end{lstlisting}
+\newpage
 \subsubsection{Programmerklärung}
-In diesem Programm werden am Anfang wie bereits die beiden Maximalen werte erstellt. Daraufhin wird ein Behälter angelegt welcher bis zum Hauptmaximum geht, wobei dieser den Datentyp Boolean hat da es mit diesem am einfachsten sei die zahlen zu streichen. Mit diesem wird schon in der ersten schleife gearbeitet in welcher alle geraden Zahlen gestrichen werden da die 2 als Startzahl gilt. In der nächsten schleife welche wie bereits erwähnt mit der 3 als Primzahl startet und bis zum Zweiten Maximum geht werden alle Zahlen welche mit 3 Multipliziert werden können gestrichen und das Programm zählt dann 2 Hoch da sie die geraden Zahlen überspringt und hier kommt die wichtigste Abfrage ins Spiel. Welche  jedes mal den Boolschen Behälter fragt ob diese Zahl bereits gestrichen wurde wenn ja wird sie übersprungen wenn nein wird der Streichvorgang durchgeführt. Nachdem diese Schleife am ende Angelangt ist, wird mit der nächsten schleife ermittelt wie viele Primzahlen es noch gibt. Mit diesem wert wird dann der nächste Behälter gemacht in welchem die Primzahlen abgespeichert werden, dieser muss erstellt werden denn der Index des Boolschen Behälters gibt an welche Zahl es ist wenn sie true ist. Dieser wird in der nächste Abfrage auch benutzt und wenn es true gibt wird dieser Index in den Primzahlenbehälter abgespeichert.
-Am ende des Programms wird die Zahl 2 noch an den Anfang des Behälters gesetzt da diese am Anfang des Programms gestrichen wurde.
+Das Programm erstellt ein array aus boolwerten welches so groß ist wie ein vorreingetragener Maximalwert, wobei die Indizes für die Primzahlen stehen.Da 1 und 0 keine Primzahlen sind werden beginnend mit dem Index 2 als true initialisiert damit alle Indizes für Testzwecke zur verfügung stehen. Anschließend beginnt das sieb mit der Zahl '2' und wenn diese true ist werden alle Multiplikationen von '2' gestrichen. Im nächsten schritt werden alle gestrichenen Zahlen übersprungen indem abgefragt wird ob sie true sind. Wenn die nächste gefunden wurde wird beginnend mit dem Quadratt der Zahl alle Multiplikationen gestrichen. Dieser Vorgang wird wiederholt bis das Quadratt einer Zahl größer ist als das Maximum. Somit hat man jetzt ein Array wo nur die Primzahlen true sind und man kann diese durch eine Abfrage simpel ausgeben.
