@@ -1,0 +1,5 @@
+http://primes.utm.edu/mersenne/index.html?id=research&month=primes&day=mersenne&year=index
+
+https://www.mersenne.org/various/history.php
+
+http://numbers.computation.free.fr/Constants/Primes/twin.html
