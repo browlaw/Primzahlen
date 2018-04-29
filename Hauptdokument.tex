@@ -7,6 +7,8 @@
 \usepackage[left=4cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 %Grafiken
 \usepackage{graphicx}
+%iwas
+\usepackage{multibib}
 %Tiefe der Numerierung im document
 \setcounter{secnumdepth}{4}
 %Tiefe der Numerierung im Inhaltsverzeichnis
@@ -25,7 +27,11 @@
 %Alles in Deutsch 
 \usepackage[german]{babel}
 \renewcommand{\indexname}{Stichwortverzeichnis}
+\newcites{Urls}{Verzeichnis der Webadressen}
 \begin{document}
+\bibliographystyleUrls{ruls}
+\nociteUrls{*}
+\bibliographyUrls{BibliographyUrls}
 \begin{titlepage}
 \title{Berühmte Sätze und Probleme Rund um Primzahlen}
 \author{Ilja Kononenko und David Silvan Zingrebe}
@@ -70,6 +76,9 @@ Hier kommen wir zu den Unbelegten Vermutungen von Primzahlen. Wir werden versuch
 \newpage
 \subsection{Goldbachsche Vermutung}
 \input{Goldbach}
+\newpage
+\addcontentsline{toc}{section}{Urls}
+\bibliography{Urls}
 \newpage
 %\section*{Info für sie nicht in die Bewertung mit einziehen}
 %\input{infos}

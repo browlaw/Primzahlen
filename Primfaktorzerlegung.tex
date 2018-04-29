@@ -1,5 +1,5 @@
 \subsubsection{Definition}
-Jede natürliche Zahl $n$ kann als Produkt von Primzahlen $p$, den Primfaktoren, dargestellt werden. Dies nennt man Primfaktorzerlegung. Die Reihenfolge der einzelnen Primfaktoren $p$ spielt wie bei jeder anderen Multiplikation keine Rolle. Für den Fall, daß $n$ eine Primzahl ist, ist sie ihr einziger Faktor. Bei der Primfaktorzerlegung können Faktoren mehrfach auftreten. Diese kann man Exponentiell zusammenfassen. Kanonische Primfaktorzerlegung wird eine Primfaktorzerlegung genannt, sobald die einzelnen Faktoren nach der Höhe ihrer Basis aufsteigend geordnet sind ($p_k < p_{k+1}$).
+Jede natürliche Zahl $n$ kann als Produkt von Primzahlen $p$, den sogenannten Primfaktoren, dargestellt werden. Diesen Vorgang nennt man Primfaktorzerlegung. Die Reihenfolge der einzelnen Primfaktoren $p$ spielt wie bei jeder anderen Multiplikation keine Rolle. Für den Fall, daß $n$ eine Primzahl ist, ist sie selbst ihr einziger Faktor. Bei der Primfaktorzerlegung können Faktoren mehrfach auftreten. Diese kann man Exponentiell zusammenfassen. Kanonische Primfaktorzerlegung wird eine Primfaktorzerlegung genannt, sobald die einzelnen Faktoren nach der Höhe ihrer Basis aufsteigend geordnet sind ($p_k < p_{k+1}$).
 \subsubsection{Beispiele}
 %*Beispiele für Primfaktorzerlegung*
 $14 = 2 \cdot 7$\newline
@@ -9,7 +9,7 @@ $1337 = 7 \cdot 191$\newline\newline
 Und in der Kanonischen Primfaktorzerlegung:\newline\newline
 $666 = 2 \cdot 3^2 \cdot 27$
 \subsubsection{Faktorisierungsverfahren}
-Bis heute gibt es kein effizientes Faktorisierungsverfahren. Die einfachste Möglichkeit ist es, die zu faktorisierende, natürliche Zahl \textbf{n} durch alle Primzahlen von Zwei bis zur Wurzel von \textbf{n} zu teilen, bis man einen Teiler gefunden hat, bei dem das Ergebnis keinen Rest hat. Man merkt sich nun diesen Teiler, also den ersten Primfaktor, und führt nun fort, ersetzt jedoch \textbf{n} mit dem gerade errechneten Quotienten. Fortgefürht wird dies, solange \textbf{n} keine Primzahl ist. Ist sie es, hat man seine natürliche Zahl \textbf{n} erfolgreich ausschliesslich mit Primzahlen faktorisiert.
+Bis heute gibt es kein effizientes Faktorisierungsverfahren. Die einfachste Möglichkeit ist es, die zu faktorisierende, natürliche Zahl $n$ durch alle Primzahlen von Zwei bis zur Wurzel von $n$ zu teilen, bis man einen Teiler gefunden hat, bei dem das Ergebnis keinen Rest hat. Man merkt sich nun diesen Teiler, also den ersten Primfaktor, und führt nun fort, ersetzt jedoch $n$ mit dem gerade errechneten Quotienten. Fortgefürht wird dies, solange $n$ keine Primzahl ist. Ist sie es, hat man seine natürliche Zahl $n$ erfolgreich ausschließlich mit Primzahlen faktorisiert.
 \subsubsection{Programmbeispiel}
 Das folgende Programm in C++ generiert eine Abbildung als String der Primfaktorzerlegung der Zahlen von 2 bis g\_maxVal.
 \lstset{language=C++}
