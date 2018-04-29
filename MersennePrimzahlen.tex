@@ -4,3 +4,26 @@ Die Mersenne Zahlen sind schon seit mehreren Jahrtausenden bekannt und die man g
 \[n=2,3,5,7,13,17,19,31,67,127\; und\; 257\]
 in seinem Vorwort zu seinem Cognita Physica-Mathematica im Jahre 1644.
 Obwohl sie aus heutiger Sicht inkorrekt ist wurde sein Name der Name dieser Primzahlen. Es dauerte mehrere Jahrhunderte bis alle zahlen überprüft wurden und erst 300 Jahre später im Jahr 1947 war sie dann vollständig bis $n<258$ überprüft worden. Durch die fortschrittlichen Entwicklungen steigerten sich die Mersenne Primzahlen schnell in den darauffolgenden Jahren. Heutzutage kann jeder die Mersenne Primzahlenfindung unterstützen indem er seine Rechnerleistung für die Great Internet Mersenne Prime Search besser bekannt als GIMPS aufgibt.
+Über welche sie sich im nachfolgenden Abschnitt genauer informieren können.
+\subsubsection{GIMPS und PrimeNet}
+GIMPS ist eine Software welche eine optimierte version des Lucas-Lehmer Codes benutzt um Mersenne Primzahlen zu testen ob sie Prim sind. Sie wurde im Jahr 1996 von George Woltman gegründet und fand ende diesen Jahres auch schon ihre erste Primzahl, mit der 35 Mersenne Primzahl $2^{1398269}-1$. Anfangs musste der Benutzer die Arbeitsaufträge noch Manuel einfordern und so eich die Ergebnisse schicken bis Scott Kurowski PrimeNet einführte. PrimeNet ermöglicht es diese Sachen automatisch zu vollführen und ohne PrimeNet wäre es nicht möglich gewesen mehrerer tausend freiwillige und mehrere Millionen Arbeitsaufträge zu verteilen. Daraus folgte dann ein großes Wachstum des Projekts statt. Falls sie sich die ganzen Meilensteine von Gimps anschauen wollen finden sie diese auf \url{https://www.mersenne.org/report_milestones/}.
+\newpage 
+\subsubsection{Lucas-Lehmer Test}
+Der Luca-Lehmer Test funktioniert simple. $Mersenne_p=2^p-1$ ist genau dann prim, wenn man $S_0=4$ setzt und $S_{n+1}=((S_n)^2-2)\;modulo\;Mersenne_p$ so lange vollführt bis $S_{p-2}$ ist und dies durch $Mersenne_p$ teilbar ist.
+\subsubsection{Programmbeispiel in Java}
+\lstset{language=Java} 
+\begin{lstlisting}[frame=single]
+private static boolean Lucas(int p) {
+		long wert = 4;
+		long prim = (long)Math.pow(2, p)-1;
+		System.out.print(prim);
+		for (int i = 0; i < p-2; i++) {
+			wert = (wert*wert-2) % prim;			
+		}
+		if (wert == 0) {
+			return true;			
+		}else {
+		return false;
+		}
+	}
+\end{lstlisting}
