@@ -1,0 +1,16 @@
+http://primes.utm.edu/mersenne/index.html?id=research&month=primes&day=mersenne&year=index
+
+https://www.mersenne.org/various/history.php
+
+http://numbers.computation.free.fr/Constants/Primes/twin.html
+
+http://arndt-bruenner.de/mathe/scripts/primzahlen.htm
+
+https://de.serlo.org/mathe/zahlen-und-groessen/teiler-und-primzahlen/primfaktor-und-primfaktorzerlegung/primfaktorzerlegung
+
+http://www.uni-protokolle.de/Lexikon/Goldbachsche_Vermutung.html
+http://www.matheprisma.uni-wuppertal.de/Module/Primz/Goldb/Goldbach.htm
+
+http://www.mathe.tu-freiberg.de/~hebisch/cafe/fermatprim.html
+
+https://mathcs.clarku.edu/~djoyce/java/elements/bookIX/propIX20.html
