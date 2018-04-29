@@ -1,2 +1,54 @@
-\subsection{Definition}
+\subsubsection{Definition}
 Fermatsche Primzahlen sind Fermat-Zahlen, die prim sind. Fermat-Zahlen sind hierbei Zahlen der Form $F_n = 2^{2^n} + 1$, wobei $n$ eine ganze Zahl groesser $0$ ist.
+\subsubsection{Informationen}
+Fermat, nach dem die Fermatschen Zahlen benannt sind, behauptete, dass alle Fermatschen Zahlen prim seien. Allerdings fand Leonhard Euler im Jahre 1732 mit der $641$ einen Teiler von $F_5=4294967297$. Bis heute wurde keine Fermatsche Primzahl mit $n > 5$ gefunden und es wird vermutet, dass es nach den ersten fuenf Fermatschen Zahlen keine weiteren Fermatschen Zahlen gibt, die prim sind. Diese Aussage beruht auf dem Primzahlsatz, nach dem die Anzahl der Primzahlen kleiner oder gleich $n$ circa $n / \ln n$ ist. Demnach ist die Wahrscheinlichkeit dafuer, dass $F_n$ eine Primzahl ist etwa $2 / \ln_{F_n}$. Die Wahrscheinlichkeit dafuer, dass $F_6$ prim ist betraegt also $\frac{2}{\ln_{F_6}} = 4.508422\%$ und fuer $F_7$ bereits nur noch $\frac{2}{\ln_{F_7}} = 2.254211\%$. Erkennbar ist hierbei, dass sich die Wahrscheinlichkeit $p_{F_{n+1}}$ dafuer, dass $F_n$ prim ist, immer circa halb so gross ist, wie $p_{F_{n}}$. Dies haengt damit zusammen, dass die Fermatschen Zahl $F_{n+1}$ immer etwa doppelt so viele Dezimalstellen wie $F_{n}$ besitzt.
+\subsubsection{Rekursive Berechnung von Fermatschen Zahlen}
+Fermatsche Zahlen koennen durch rekursiv berechnet werden. Hierfuer gibt es verschiedene Algorithmen.
+Fuer $n \ge 1$ gilt:
+\begin{equation}
+F_n = (F_{n - 1} - 1 )^2 + 1
+\end{equation}
+oder
+\begin{equation}
+F_n = F_0 \cdot F_1 \cdot ... \cdot F_{n-1} + 2
+\end{equation}
+Hier ist der erste dieser beiden Algorithmen in Programmcode umgesetzt:
+\lstset{language=C}
+\begin{lstlisting}[frame=single]
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+double read_input(void)
+{
+        char buf[256];
+        double n = -1;
+
+        printf("Enter n: ");
+        scanf("%lf", &n);
+        return n;
+}
+
+double fermat_1(double num)
+{
+        double f;
+        if (num == 0)
+                f = 3;
+        else
+                f = pow(fermat_1(num - 1) - 1, 2) + 1;
+        printf("F_%.0lf = %.0lf\n", num, f);
+        return f;
+}
+
+int main(int argc, char *argv[])
+{
+        double n = read_input();
+        fermat_1(n);
+
+        return 0;
+}
+\end{lstlisting}
+\subsubsection{Anwendung Fermatscher Primzahlen in der Geometrie}
+Carl Friedrich Gauss fand einen Zusammenhang zwischen den Fermatschen Primzahlen und der Konstruktion von regelmaessigen Vielecken. Er bewies, dass ein regelmaessiges Vieleck mit $n$ Seiten nur mit ausschliesslich Zirkel und Lineal konstruiert werden kann, wenn n eine Potenz von $2$ oder das Produkt einer Protenz von 2 und verschiedenen Fermatschen Primzahlen ist.
+\subsubsection{Finden neuer Primzahlen}
+Fermatschen Zahlen sind teilerfremd zueinander. Daraus kann man schliessen, dass die Faktoren einer Primfaktorzerlegung sich nicht ueberschneiden. Da es unendlich viele Fermatsche Zahlen gibt, kann man erschliessen, dass es unendlich viele unterschiedliche Primfaktoren und somit unendlich viele Primzahlen gibt.
